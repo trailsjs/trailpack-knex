@@ -5,7 +5,8 @@
 [![Dependency Status][daviddm-image]][daviddm-url]
 [![Code Climate][codeclimate-image]][codeclimate-url]
 
-Knex Trailpack
+Provides support for database queries and schema migrations via [knex.js](http://knexjs.org/).
+Required by [trailpack-bookshelf](https://github.com/trailsjs/trailpack-bookshelf).
 
 ## Install
 
@@ -15,13 +16,72 @@ $ npm install --save trailpack-knex
 
 ## Configure
 
+#### `main.js`
+
 ```js
-// config/trailpack.js
+// config/main.js
 module.exports = {
   packs: [
     // ... other trailpacks
     require('trailpack-knex')
   ]
+}
+```
+
+#### `database.js`
+
+```js
+// config/database.js
+module.exports = {
+  stores: {
+    knexPostgres: {
+      client: 'pg',
+
+      /**
+       * knex connection object
+       * see: http://knexjs.org/#Installation-client
+       */
+      connection: {
+        host: 'localhost',
+        user: 'admin',
+        password: '1234',
+        database: 'mydb'
+      }
+    }
+  },
+
+  /**
+   * Supported Migrate Settings:
+   * - drop
+   * - create
+   */
+  migrate: 'create',
+  defaultStore: 'knexPostgres'
+}
+```
+
+## Usage
+
+#### Models
+
+```js
+// api/models/User.js
+class User extends Model {
+  static schema (table) {
+    table.increments('id').primary()
+    table.string('username')
+    table.string('firstName')
+    table.string('lastName')
+  }
+}
+
+// api/models/Role.js
+class Role extends Model {
+  static schema (table) {
+    table.increments('id').primary()
+    table.string('name')
+    table.integer('user_id').references('user.id')
+  }
 }
 ```
 

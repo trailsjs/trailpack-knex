@@ -1,0 +1,1 @@
+exports.SchemaMigrationService = require('./SchemaMigrationService')
