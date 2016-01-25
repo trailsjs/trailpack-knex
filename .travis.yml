@@ -1,0 +1,21 @@
+language: node_js
+node_js:
+- '4'
+- stable
+
+notifications:
+  email: false
+  webhooks:
+    urls:
+    - https://webhooks.gitter.im/e/54f8a1e753f859f5ca1a
+    on_start: never
+    on_failure: change
+
+deploy:
+  provider: npm
+  email: hello@trailsjs.io
+  api_key:
+    secure: TGkTUIFs+ZNljh0LT28ibEewottLF8oY0i7yZF7RrWnwbr2Oi2VlTlNGooGqoZuaH+REj92kW1wrcQK3RvA9rGYaR25d1PbE9rx5cTCuAC9LHYZj8XWZE9ytkU0oN9g3jbnXqUKKd1NIR7iLh02RB0PHh7402huX3BgLJXIM4CGNkNIPk8CJB62Y0QG+MniHNuVnoWpyyOHz++6QVkWkoMwfhfBgUpwj//KCh6nTk7Wk+1kvllqvdPjihVVM8zZX5tZ4pSOuzREzjKy02Wdvrnv9FdRHH/yXVX1jhq9A9Ub5c/O54DuqowG+wPgodf9F/4CI/Msijep/8qa2bI2wrdNcYpTjYKMxloGQQzd6quLrkIgDY6MGXSPpssGcsEIPHyYEneyPiKuKC09/swl8Q7Iok6nTtq1lVj/lCbf0v9XvswwW7WOcyT8uL3w1nxBF2BQ5orCu7hE3aJltLHc3VHKWtZcl5SKp4Gf/9PL8ORXmOU9au5PW0fzsarVaMcx0ouY7ERJuIqwP+HZzAOxz2TvLPlwN0gIUYt3mZ06jN2BVVX6VJoUbh7OnbTj2HLgdHOJ+E3CaQWsWL4QeBY0EkhQ39myvppFx/ONpZB+J5JxG16eNZAdad9egL0Vyns221/tnMhegJ8cM3yti5UAosq5qh8/fzZGyV+hsGDAStmw=
+  on:
+    tags: true
+    repo: trailsjs/trailpack-knex
