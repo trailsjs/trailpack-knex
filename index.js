@@ -4,6 +4,10 @@ const _ = require('lodash')
 const knex = require('knex')
 const DatastoreTrailpack = require('trailpack-datastore')
 
+/**
+ * Knex integration for Trails. Allows knex to read its configration from the
+ * trails datastore config, and auto-migrate on startup.
+ */
 module.exports = class KnexTrailpack extends DatastoreTrailpack {
 
   /**
@@ -13,6 +17,10 @@ module.exports = class KnexTrailpack extends DatastoreTrailpack {
     if (!_.includes([ 'drop', 'create' ], this.app.config.database.models.migrate)) {
       throw new Error('Migrate must be configured to either "create" or "drop"')
     }
+  }
+
+  configure () {
+    this.app.config.database.orm = 'knex'
   }
 
   /**
