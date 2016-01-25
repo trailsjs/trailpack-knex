@@ -11,34 +11,27 @@ module.exports = _.defaultsDeep({
   api: {
     models: {
       User: class User extends Model {
-        static schema () {
-          return {
-            name: 'string',
-            roles: {
-              collection: 'Role',
-              via: 'user'
-            }
-          }
+        static schema (table) {
+          table.increments('id').primary()
+          table.string('username')
         }
       },
       Role: class Role extends Model {
-        static schema () {
-          return {
-            name: 'string',
-            user: {
-              model: 'User'
-            }
-          }
+        static schema (table) {
+          table.increments('id').primary()
+          table.string('username')
         }
       }
     }
   },
   config: {
+    log: {
+      logger: new smokesignals.Logger('error')
+    },
     main: {
       packs: [
-        smokesignals.Trailpack,
         require('trailpack-core'),
-        require('../') // trailpack-waterline
+        require('../') // trailpack-knex
       ]
     },
     database: {

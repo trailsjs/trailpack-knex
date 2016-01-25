@@ -8,11 +8,11 @@ const Service = require('trails-service')
  * @description Schema Migrations
  */
 module.exports = class SchemaMigrationService extends Service {
-  
+
   /**
    * @param knex connection object
    *
-   * Drop schema for Model
+   * Drop schema for a store
    */
   drop (knex, models) {
     return knex.transaction(txn => {
@@ -21,14 +21,14 @@ module.exports = class SchemaMigrationService extends Service {
           'for model', model.getModelName())
 
         return txn.schema.dropTableIfExists(model.getTableName())
-      })
+      }))
     })
   }
 
   /**
    * @param knex connection object
    *
-   * Create schema for Model
+   * Create schema for models in a store
    */
   create (knex, models) {
     return knex.transaction(txn => {
@@ -43,9 +43,11 @@ module.exports = class SchemaMigrationService extends Service {
     })
   }
 
+  /**
+   * Alter an existing schema
+   */
   alter (knex, model) {
     throw new Error('trailpack-knex does not currently support migrate=alter')
   }
-
 }
 
