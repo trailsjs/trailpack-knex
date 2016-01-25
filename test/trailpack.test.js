@@ -1,7 +1,6 @@
 'use strict'
 
 const assert = require('assert')
-const _ = require('lodash')
 
 describe('Knex Trailpack', () => {
   describe('#initialize', () => {
