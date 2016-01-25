@@ -62,7 +62,7 @@ module.exports = {
 
 ## Usage
 
-#### Models
+### Models
 
 ```js
 // api/models/User.js
@@ -84,6 +84,19 @@ class Role extends Model {
   }
 }
 ```
+
+### Services
+
+#### `SchemaMigrationService`
+
+##### `create`
+Create the schema using knex
+
+##### `drop`
+Drop the schema using knex
+
+##### `alter`
+Not currently supported.
 
 [npm-image]: https://img.shields.io/npm/v/trailpack-knex.svg?style=flat-square
 [npm-url]: https://npmjs.org/package/trailpack-knex
