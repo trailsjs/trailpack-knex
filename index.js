@@ -16,12 +16,6 @@ module.exports = class KnexTrailpack extends DatastoreTrailpack {
   }
 
   /**
-   * Set the store property on each model
-   */
-  configure () {
-  }
-
-  /**
    * Initialize knex connections, and perform migrations.
    */
   initialize () {
