@@ -63,6 +63,8 @@ module.exports = class KnexTrailpack extends DatastoreTrailpack {
     const SchemaMigrationService = this.app.services.SchemaMigrationService
     const database = this.app.config.database
 
+    if (database.models.migrate == 'none') return
+
     return Promise.all(
       _.map(this.stores, store => {
         if (database.models.migrate == 'drop') {
