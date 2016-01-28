@@ -6,9 +6,7 @@
 module.exports = {
   lifecycle: {
     initialize: {
-      listen: [
-        'trailpack:datastore:initialized'
-      ],
+      listen: [ ],
       emit: [ ]
     }
   }
