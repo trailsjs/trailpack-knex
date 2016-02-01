@@ -14,7 +14,7 @@ module.exports = class KnexTrailpack extends DatastoreTrailpack {
    * Ensure that this trailpack supports the configured migration
    */
   validate () {
-    if (!_.includes([ 'drop', 'create' ], this.app.config.database.models.migrate)) {
+    if (!_.includes([ 'none', 'drop', 'create' ], this.app.config.database.models.migrate)) {
       throw new Error('Migrate must be configured to either "create" or "drop"')
     }
   }
@@ -35,6 +35,7 @@ module.exports = class KnexTrailpack extends DatastoreTrailpack {
         models: _.pickBy(this.app.models, { store: storeName })
       }
     })
+    this.defaultStore = this.stores[this.app.config.database.defaultStore]
 
     return this.migrate()
   }
