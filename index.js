@@ -35,7 +35,7 @@ module.exports = class KnexTrailpack extends DatastoreTrailpack {
         models: _.pickBy(this.app.models, { store: storeName })
       }
     })
-    this.defaultStore = this.stores[this.app.config.database.defaultStore]
+    this.defaultStore = this.stores[this.app.config.database.models.defaultStore]
 
     return this.migrate()
   }
