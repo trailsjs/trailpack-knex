@@ -100,10 +100,10 @@ Not currently supported.
 
 [npm-image]: https://img.shields.io/npm/v/trailpack-knex.svg?style=flat-square
 [npm-url]: https://npmjs.org/package/trailpack-knex
-[ci-image]: https://img.shields.io/travis//trailpack-knex/master.svg?style=flat-square
-[ci-url]: https://travis-ci.org//trailpack-knex
-[daviddm-image]: http://img.shields.io/david//trailpack-knex.svg?style=flat-square
-[daviddm-url]: https://david-dm.org//trailpack-knex
-[codeclimate-image]: https://img.shields.io/codeclimate/github//trailpack-knex.svg?style=flat-square
-[codeclimate-url]: https://codeclimate.com/github//trailpack-knex
+[ci-image]: https://img.shields.io/travis/trailsjs/trailpack-knex/master.svg?style=flat-square
+[ci-url]: https://travis-ci.org/trailsjs/trailpack-knex
+[daviddm-image]: http://img.shields.io/david/trailsjs/trailpack-knex.svg?style=flat-square
+[daviddm-url]: https://david-dm.org/trailsjs/trailpack-knex
+[codeclimate-image]: https://img.shields.io/codeclimate/github/trailsjs/trailpack-knex.svg?style=flat-square
+[codeclimate-url]: https://codeclimate.com/github/trailsjs/trailpack-knex
 
