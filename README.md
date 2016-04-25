@@ -6,7 +6,6 @@
 [![Code Climate][codeclimate-image]][codeclimate-url]
 
 Provides support for database queries and schema migrations via [knex.js](http://knexjs.org/).
-Required by [trailpack-bookshelf](https://github.com/trailsjs/trailpack-bookshelf).
 
 ## Install
 
@@ -97,6 +96,15 @@ Drop the schema using knex
 
 ##### `alter`
 Not currently supported.
+
+## Contributing
+We love contributions! Please check out our [Contributor's Guide](https://github.com/trailsjs/trails/blob/master/.github/CONTRIBUTING.md) for more
+information on how our projects are organized and how to get started.
+
+## License
+[MIT](https://github.com/trailsjs/trails/blob/master/LICENSE)
+
+<img src="http://i.imgur.com/dCjNisP.png">
 
 [npm-image]: https://img.shields.io/npm/v/trailpack-knex.svg?style=flat-square
 [npm-url]: https://npmjs.org/package/trailpack-knex
