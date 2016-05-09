@@ -26,7 +26,7 @@
     "eslint-config-trails": "^1.0.1",
     "mocha": "^2.3",
     "smokesignals": "^1.0.2",
-    "sqlite3": "^3.1.1",
+    "sqlite3": "waterlinejs/node-sqlite3",
     "trailpack-core": "^1.0.0-alpha-3",
     "trails": "^1.0.0-alpha-1",
     "trails-model": "^1.0.0-alpha-1"
