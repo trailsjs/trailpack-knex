@@ -36,7 +36,7 @@ module.exports = class SchemaMigrationService extends Service {
         this.app.log.debug('SchemaMigrationService: performing "create" migration',
           'for model', model.getModelName())
 
-        return txn.schema.hasTable()
+        return txn.schema.hasTable(model.getTableName())
           .then(exists => {
             if (exists) return
 
