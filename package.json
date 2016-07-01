@@ -23,7 +23,7 @@
   },
   "devDependencies": {
     "eslint": "^2.0.0-beta.1",
-    "eslint-config-trails": "^1.0.1",
+    "eslint-config-trails": "^1.0.6",
     "mocha": "^2.3",
     "smokesignals": "^1.0.2",
     "sqlite3": "waterlinejs/node-sqlite3",
