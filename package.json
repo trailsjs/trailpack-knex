@@ -24,7 +24,7 @@
   "devDependencies": {
     "eslint": "^3.1.1",
     "eslint-config-trails": "^1.0.1",
-    "mocha": "^2.5.0",
+    "mocha": "^3.0.1",
     "smokesignals": "^1.0.2",
     "sqlite3": "waterlinejs/node-sqlite3",
     "trailpack-core": "^1.0.0-alpha-3",
