@@ -21,16 +21,6 @@ module.exports = class KnexTrailpack extends DatastoreTrailpack {
 
   configure () {
     this.app.config.database.orm = 'knex'
-
-    // set pool if not configured (knex will complain)
-    _.each(this.app.config.database.stores, (store, storeName) => {
-      if (!store.pool) {
-        this.log.warn('trailpack-knex: "pool" not configured for store:', storeName)
-        this.log.warn('trailpack-knex: using default pool configuration', this.config.poolDefaults)
-
-        store.pool = this.config.poolDefaults
-      }
-    })
   }
 
   /**
@@ -41,7 +31,7 @@ module.exports = class KnexTrailpack extends DatastoreTrailpack {
 
     this.stores = _.mapValues(this.app.config.database.stores, (store, storeName) => {
       return {
-        knex: knex(store),
+        knex: knex(JSON.parse(JSON.stringify(store))),
         models: _.pickBy(this.app.models, { store: storeName })
       }
     })
