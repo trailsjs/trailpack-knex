@@ -1,7 +1,7 @@
 /**
  * Trailpack Configuration
  *
- * @see {@link http://trailsjs.io/doc/trailpack/config
+ * @see {@link http://trailsjs.io/doc/trailpack/config}
  */
 module.exports = {
   lifecycle: {
@@ -9,5 +9,10 @@ module.exports = {
       listen: [ ],
       emit: [ ]
     }
+  },
+
+  poolDefaults: {
+    min: 1,
+    max: 16
   }
 }
