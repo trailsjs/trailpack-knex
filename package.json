@@ -16,7 +16,7 @@
   ],
   "dependencies": {
     "knex": "^0.11.6",
-    "lodash": "^4.0.0",
+    "lodash": "^4.11.2",
     "trailpack": "^1.0.0-alpha-7",
     "trailpack-datastore": "^1.0.0",
     "trails-service": "^1.0.0-alpha-1"
