@@ -19,7 +19,7 @@
     "lodash": "^4.0.0",
     "trailpack": "^1.0.0-alpha-7",
     "trailpack-datastore": "^1.0.0",
-    "trails-service": "^1.0.0-alpha-1"
+    "trails-service": "^1.0.0"
   },
   "devDependencies": {
     "eslint": "^3.1.1",
