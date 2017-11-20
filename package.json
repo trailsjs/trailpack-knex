@@ -1,6 +1,6 @@
 {
   "name": "trailpack-knex",
-  "version": "0.5.14",
+  "version": "3.0.0",
   "description": "Knex Trailpack",
   "homepage": "https://github.com/trailsjs/trailpack-knex",
   "author": {
