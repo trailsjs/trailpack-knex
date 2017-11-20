@@ -1,8 +1,6 @@
-'use strict'
-
 const _ = require('lodash')
 const smokesignals = require('smokesignals')
-const Model = require('trails-model')
+const Model = require('trails/lib/Model')
 
 module.exports = _.defaultsDeep({
   pkg: {
@@ -11,12 +9,22 @@ module.exports = _.defaultsDeep({
   api: {
     models: {
       User: class User extends Model {
+        static config () {
+          return {
+            store: 'teststore'
+          }
+        }
         static schema (table) {
           table.increments('id').primary()
           table.string('username')
         }
       },
       Role: class Role extends Model {
+        static config () {
+          return {
+            store: 'teststore'
+          }
+        }
         static schema (table) {
           table.increments('id').primary()
           table.string('username')
@@ -30,22 +38,16 @@ module.exports = _.defaultsDeep({
     },
     main: {
       packs: [
-        require('trailpack-core'),
         require('../') // trailpack-knex
       ]
     },
-    database: {
-      stores: {
-        teststore: {
-          client: 'sqlite3',
-          connection: {
-            filename: './testdb.sqlite'
-          }
+    stores: {
+      teststore: {
+        migrate: 'drop',
+        client: 'sqlite3',
+        connection: {
+          filename: './testdb.sqlite'
         }
-      },
-      models: {
-        defaultStore: 'teststore',
-        migrate: 'drop'
       }
     }
   }

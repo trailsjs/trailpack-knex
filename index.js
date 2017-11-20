@@ -1,8 +1,6 @@
-'use strict'
-
 const _ = require('lodash')
 const knex = require('knex')
-const DatastoreTrailpack = require('trailpack-datastore')
+const DatastoreTrailpack = require('trailpack/datastore')
 
 /**
  * Knex integration for Trails. Allows knex to read its configration from the
@@ -14,28 +12,31 @@ module.exports = class KnexTrailpack extends DatastoreTrailpack {
    * Ensure that this trailpack supports the configured migration
    */
   validate () {
+    /*
     if (!_.includes([ 'none', 'drop', 'create' ], this.app.config.database.models.migrate)) {
       throw new Error('Migrate must be configured to either "create" or "drop"')
     }
+    */
   }
 
   configure () {
-    this.app.config.database.orm = 'knex'
+    //this.app.config.stores.orm = 'knex'
   }
 
   /**
    * Initialize knex connections, and perform migrations.
    */
-  initialize () {
+  async initialize () {
     super.initialize()
 
-    this.stores = _.mapValues(this.app.config.database.stores, (store, storeName) => {
+    this.stores = _.mapValues(this.app.config.stores, (store, storeName) => {
       return {
-        knex: knex(JSON.parse(JSON.stringify(store))),
-        models: _.pickBy(this.app.models, { store: storeName })
+        knex: knex(Object.assign({ }, store)),
+        models: _.pickBy(this.app.models, { store: storeName }),
+        migrate: store.migrate
       }
     })
-    this.defaultStore = this.stores[this.app.config.database.models.defaultStore]
+    //this.defaultStore = this.stores[this.app.config.models.defaultStore]
 
     return this.migrate()
   }
@@ -43,7 +44,7 @@ module.exports = class KnexTrailpack extends DatastoreTrailpack {
   /**
    * Close all database connections
    */
-  unload () {
+  async unload () {
     return Promise.all(
       _.map(this.stores, store => store.knex.destroy())
     )
@@ -62,21 +63,20 @@ module.exports = class KnexTrailpack extends DatastoreTrailpack {
    */
   migrate () {
     const SchemaMigrationService = this.app.services.SchemaMigrationService
-    const database = this.app.config.database
 
-    if (database.models.migrate == 'none') return
+    //if (this.app.config.get(models.migrate == 'none') return
 
     return Promise.all(
-      _.map(this.stores, store => {
-        if (database.models.migrate == 'drop') {
+      _.map(this.stores, (store, storeName) => {
+        if (store.migrate === 'drop') {
           return SchemaMigrationService.drop(store.knex, this.app.models)
+            .then(result => SchemaMigrationService.create(store.knex, this.app.models))
         }
-      }))
-      .then(() => {
-        return Promise.all(_.map(this.stores, store => {
-          return SchemaMigrationService.create(store.knex, this.app.models)
-        }))
+        else {
+          return SchemaMigrationService[store.migrate](store.knex, this.app.models)
+        }
       })
+    )
   }
 }
 

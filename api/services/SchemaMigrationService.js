@@ -1,7 +1,5 @@
-'use strict'
-
 const _ = require('lodash')
-const Service = require('trails-service')
+const Service = require('trails/lib/Service')
 
 /**
  * @module SchemaMigrationService
@@ -53,6 +51,10 @@ module.exports = class SchemaMigrationService extends Service {
    */
   alter (knex, model) {
     throw new Error('trailpack-knex does not currently support migrate=alter')
+  }
+
+  none () {
+
   }
 }
 
