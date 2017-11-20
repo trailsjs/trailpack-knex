@@ -17,6 +17,8 @@
   "dependencies": {
     "knex": "0.11.6",
     "lodash": "^4.0.0",
+    "node-uuid": "^1.4.8",
+    "sqlite3": "^3.1.13",
     "trailpack": "^1.0.0-alpha-7",
     "trailpack-datastore": "^1.0.0",
     "trails-service": "^1.0.0-alpha-1"
@@ -26,7 +28,6 @@
     "eslint-config-trails": "^1.0.1",
     "mocha": "^3.0.2",
     "smokesignals": "^1.0.2",
-    "sqlite3": "waterlinejs/node-sqlite3",
     "trailpack-core": "^1.0.0-alpha-3",
     "trails": "^1.0.0-alpha-1",
     "trails-model": "^1.0.0-alpha-1"
