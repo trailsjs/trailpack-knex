@@ -20,7 +20,7 @@ module.exports = class KnexTrailpack extends DatastoreTrailpack {
   }
 
   configure () {
-    //this.app.config.stores.orm = 'knex'
+    this.app.config.set('stores.orm', 'knex')
   }
 
   /**
@@ -36,8 +36,6 @@ module.exports = class KnexTrailpack extends DatastoreTrailpack {
         migrate: store.migrate
       }
     })
-    //this.defaultStore = this.stores[this.app.config.models.defaultStore]
-
     return this.migrate()
   }
 
@@ -63,8 +61,6 @@ module.exports = class KnexTrailpack extends DatastoreTrailpack {
    */
   migrate () {
     const SchemaMigrationService = this.app.services.SchemaMigrationService
-
-    //if (this.app.config.get(models.migrate == 'none') return
 
     return Promise.all(
       _.map(this.stores, (store, storeName) => {
